@@ -1,4 +1,4 @@
-FROM runpod/worker-comfyui:5.4.0-sdxl
+FROM runpod/worker-comfyui:5.4.1-sdxl
 
 RUN cd /workspace/ComfyUI/custom_nodes && \
     git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus && \
