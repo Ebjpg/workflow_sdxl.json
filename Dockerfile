@@ -1,14 +1,15 @@
 FROM runpod/worker-comfyui:5.4.1-sdxl
 
 # Gerekli paketler
-RUN apt-get update && apt-get install -y --no-install-recommends git ffmpeg \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates git ffmpeg \
  && rm -rf /var/lib/apt/lists/*
 
-# Dizinleri oluştur
+# Dizinler
 RUN mkdir -p /workspace/ComfyUI/custom_nodes
+WORKDIR /workspace/ComfyUI/custom_nodes
 
 # Custom nodes
-WORKDIR /workspace/ComfyUI/custom_nodes
 RUN git clone --depth=1 https://github.com/cubiq/ComfyUI_IPAdapter_plus && \
     git clone --depth=1 https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved && \
     git clone --depth=1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite && \
