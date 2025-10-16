@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
-BASE=/workspace/ComfyUI/models
+
+BASE=/comfyui/models
 mkdir -p "$BASE"/{checkpoints,vae,ipadapter,clip_vision,animatediff_models,animatediff_motion_lora,loras,diffusion_models,text_encoders}
 
 dl(){ url="$1"; out="$2"; echo ">>> $url -> $out"; [ -f "$out" ] || curl -L --fail --retry 3 "$url" -o "$out"; ls -lh "$out"; }
