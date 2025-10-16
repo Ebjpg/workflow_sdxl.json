@@ -14,8 +14,9 @@ ENV PYTHONPATH=/comfyui
 RUN mkdir -p /comfyui/custom_nodes
 WORKDIR /comfyui/custom_nodes
 
-# Custom nodes (DOĞRU DİZİNE)
+# Custom nodes
 RUN git clone --depth=1 https://github.com/cubiq/ComfyUI_IPAdapter_plus && \
+    git clone --depth=1 https://github.com/comfyanonymous/ComfyUI-AnimateDiff && \  # <-- EKLENDİ
     git clone --depth=1 https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved && \
     git clone --depth=1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite && \
     git clone --depth=1 https://github.com/kijai/ComfyUI-ADMotionDirector
