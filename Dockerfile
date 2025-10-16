@@ -17,11 +17,12 @@ RUN git clone --depth=1 https://github.com/cubiq/ComfyUI_IPAdapter_plus && \
 
 # Python bağımlılıkları (VHS/AD/IPAdapter/MotionDirector)
 WORKDIR /workspace/ComfyUI
-RUN pip install --no-cache-dir imageio imageio-ffmpeg opencv-python-headless && \
-    [ -f custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt || true && \
-    [ -f custom_nodes/ComfyUI-AnimateDiff-Evolved/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-AnimateDiff-Evolved/requirements.txt || true && \
-    [ -f custom_nodes/ComfyUI_IPAdapter_plus/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI_IPAdapter_plus/requirements.txt || true && \
-    [ -f custom_nodes/ComfyUI-ADMotionDirector/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-ADMotionDirector/requirements.txt || true
+RUN pip install --no-cache-dir \
+      imageio imageio-ffmpeg opencv-python-headless av moviepy \
+  && [ -f custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt || true \
+  && [ -f custom_nodes/ComfyUI-AnimateDiff-Evolved/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-AnimateDiff-Evolved/requirements.txt || true \
+  && [ -f custom_nodes/ComfyUI_IPAdapter_plus/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI_IPAdapter_plus/requirements.txt || true \
+  && [ -f custom_nodes/ComfyUI-ADMotionDirector/requirements.txt ] && pip install --no-cache-dir -r custom_nodes/ComfyUI-ADMotionDirector/requirements.txt || true
 
 # Model klasörleri
 RUN mkdir -p /workspace/ComfyUI/models/{checkpoints,vae,ipadapter,clip_vision,animatediff_models,animatediff_motion_lora,loras,diffusion_models,text_encoders}
