@@ -5,6 +5,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl ca-certificates git ffmpeg \
  && rm -rf /var/lib/apt/lists/*
 
+# ComfyUI yol ortam değişkenleri (keşfi zorlamamız için)
+ENV COMFYUI_ROOT=/workspace/ComfyUI
+ENV COMFYUI_CUSTOM_NODE_PATH=/workspace/ComfyUI/custom_nodes
+ENV PYTHONPATH=/workspace/ComfyUI
+
 # Dizinler
 RUN mkdir -p /workspace/ComfyUI/custom_nodes
 WORKDIR /workspace/ComfyUI/custom_nodes
